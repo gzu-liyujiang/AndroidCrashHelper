@@ -1,4 +1,4 @@
-package cn.qqtheme.crash;
+package cn.qqtheme.crash.demo;
 
 import cn.qqtheme.framework.AppContext;
 import android.app.Application;
