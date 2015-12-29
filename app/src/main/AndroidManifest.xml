@@ -12,6 +12,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
@@ -21,9 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MyCrashActivity"
-            android:exported="false" />
+        <activity android:name=".MyCrashActivity" />
+
     </application>
 
 </manifest>

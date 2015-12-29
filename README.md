@@ -29,11 +29,12 @@ dependencies {
     compile project(':CrashHelper')
 }
 ```    
-### 最简单暴力的使用方法只需在AndroidManifest.xml中加入一句代码：
+### 最简单暴力的使用方法只需在AndroidManifest.xml中加入两句代码：
 ```xml
 <application
    android:name="cn.qqtheme.framework.AppContext"
    ...>
+      <activity android:name="cn.qqtheme.framework.activity.CrashActivity" />
       ...
 </application>
 ```   

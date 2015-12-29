@@ -15,6 +15,7 @@ public class DemoApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        //AppContext.initialize(this);
         AppContext.initialize(this, MyCrashActivity.class);
     }
 
