@@ -39,7 +39,7 @@ dependencies {
 </application>
 ```   
 下面是更灵活的应用。。。   
-### 分别建立一个Application子类及Activity子类，并在AndroidManifest.xml中声明（需要READ_PHONE_STATE权限）：   
+### 分别建立一个Application子类及Activity子类，并在AndroidManifest.xml中声明：   
 ```xml
 <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
@@ -96,7 +96,7 @@ public class DemoApp extends AppContext {
     @Override
     public void onCreate() {
         super.onCreate();
-        AppContext.initialize(this, MyCrashActivity.class);
+        //initialize other you want
     }
 
 }
@@ -108,7 +108,7 @@ public class MyCrashActivity extends CrashActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_crash);
-        TextView tv = findView(R.id.stacktrace);
+        TextView tv = (TextView)findViewById(R.id.stacktrace);
         tv.setText(stackTrace);
         ...
     }
