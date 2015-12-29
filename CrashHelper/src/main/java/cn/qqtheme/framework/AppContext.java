@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import cn.qqtheme.framework.tool.CrashHelper;
+
 import android.app.Activity;
 
 /**
@@ -48,11 +49,15 @@ public class AppContext extends Application {
     }
 
 
-    @Override public void onCreate() {
+    @Override
+    public void onCreate() {
         super.onCreate();
-        initialize(this, null);
+        initialize(this);
     }
 
+    public static void initialize(Context context) {
+        initialize(context, null);
+    }
 
     /**
      * Initialize to make framework ready to work. If you didn't configure
@@ -66,8 +71,7 @@ public class AppContext extends Application {
     public static void initialize(Context context, Class<? extends Activity> clazz) {
         if (context instanceof Application) {
             applicationContext = context;
-        }
-        else {
+        } else {
             applicationContext = context.getApplicationContext();
         }
         CrashHelper.install(applicationContext, clazz);

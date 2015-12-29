@@ -1,17 +1,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:gravity="center">
-
-    <TextView
-        android:text="@string/hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Crash 〒_〒"
-        android:onClick="onClickBotExists"/>
-    
+        android:onClick="onCrashException"
+        android:text="Crash 1 〒_〒" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickNotExists"
+        android:text="Crash 2 〒_〒" />
+
 </LinearLayout>

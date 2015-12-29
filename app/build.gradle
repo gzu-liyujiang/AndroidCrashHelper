@@ -1,13 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.0"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "cn.qqtheme.crash"
-        minSdkVersion 14
-        targetSdkVersion 21
+        minSdkVersion 8
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
     }
@@ -20,6 +19,5 @@ android {
 }
 
 dependencies {
-	compile project(':library')
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+	compile project(':CrashHelper')
 }

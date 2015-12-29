@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
@@ -19,7 +18,6 @@ import cn.qqtheme.framework.AppConfig;
 import android.widget.Toast;
 import android.graphics.Color;
 
-import cn.qqtheme.framework.tool.ActivityManager;
 import cn.qqtheme.framework.tool.CrashHelper;
 
 import android.os.Build;
@@ -116,7 +114,7 @@ public class CrashActivity extends Activity {
     private void exitApp() {
         finish();
         //不退出的话，如果已进入主界面就奔溃，可能会一直循环弹出奔溃提示
-        ActivityManager.getInstance().exitApp();
+        //ActivityManager.getInstance().exitApp();
     }
 
     private void sendToQQ() {

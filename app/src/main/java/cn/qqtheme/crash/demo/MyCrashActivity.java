@@ -1,5 +1,7 @@
 package cn.qqtheme.crash.demo;
 
+import android.os.Bundle;
+
 import cn.qqtheme.framework.activity.CrashActivity;
 
 /**
@@ -12,8 +14,8 @@ import cn.qqtheme.framework.activity.CrashActivity;
 public class MyCrashActivity extends CrashActivity {
 
     @Override
-    public void onCreate() {
-        super.onCreate();
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_custom_crash);
         //TextView tv = findView(R.id.stacktrace);
         //tv.setText(stackTrace);
