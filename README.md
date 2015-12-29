@@ -1,0 +1,2 @@
+# AndroidCrashHelper
+Android Crash Helper。安卓APP自定义异常处理器，当APP触发未捕获的异常时，使用该处理器自定义有好的奔溃提示页面代替系统默认的那个讨厌的对话框
