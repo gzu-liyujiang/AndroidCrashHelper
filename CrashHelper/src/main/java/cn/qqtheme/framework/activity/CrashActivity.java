@@ -25,17 +25,21 @@ import android.app.Activity;
 
 public class CrashActivity extends Activity {
     protected String stackTrace = "";
+    protected String deviceInfo = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (Build.VERSION.SDK_INT >= 21) {
             setTheme(android.R.style.Theme_Material_Wallpaper);
-        } else {
+        } else if (Build.VERSION.SDK_INT >= 11) {
             setTheme(android.R.style.Theme_Holo_Wallpaper);
+        } else {
+            setTheme(android.R.style.Theme_Wallpaper);
         }
         setTitle("软件奔溃啦！");
         stackTrace = CrashHelper.getStackTraceFromIntent(getIntent());
+        deviceInfo = CrashHelper.getDeviceInfo();
         View contentView = buildCustomView();
         setContentView(contentView);
     }
@@ -84,7 +88,7 @@ public class CrashActivity extends Activity {
         scrollView.addView(scrollableView);
         TextView traceView = new TextView(this);
         traceView.setPadding(10, 10, 10, 10);
-        traceView.append(CrashHelper.getDeviceInfo());
+        traceView.append(deviceInfo);
         traceView.append(stackTrace);
         scrollableView.addView(traceView);
         rootLayout.addView(scrollView);
@@ -101,7 +105,7 @@ public class CrashActivity extends Activity {
         rootLayout.addView(button);
         return rootLayout;
     }
-    
+
     private void restartApp() {
         //必须调用getApplicationContext()才能获得正确的包名
         String packageName = getApplicationContext().getPackageName();
@@ -110,7 +114,7 @@ public class CrashActivity extends Activity {
         startActivity(intent);
         finish();
     }
-    
+
     private void exitApp() {
         finish();
         //不退出的话，如果已进入主界面就奔溃，可能会一直循环弹出奔溃提示
