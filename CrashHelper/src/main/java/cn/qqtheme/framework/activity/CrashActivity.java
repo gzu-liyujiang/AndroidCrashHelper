@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -37,7 +38,7 @@ public class CrashActivity extends Activity {
         } else {
             setTheme(android.R.style.Theme_Wallpaper);
         }
-        setTitle("软件奔溃啦！");
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         stackTrace = CrashHelper.getStackTraceFromIntent(getIntent());
         deviceInfo = CrashHelper.getDeviceInfo();
         View contentView = buildCustomView();
@@ -50,18 +51,24 @@ public class CrashActivity extends Activity {
     }
 
     private void showDialog() {
+        String[] menus;
+        if (AppConfig.DEBUG_ENABLE) {
+            menus = new String[]{"重新启动", "退出软件"};
+        } else {
+            menus = new String[]{"重新启动", "退出软件", "告诉开发者"};
+        }
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setIcon(android.R.drawable.ic_dialog_alert);
-        builder.setItems(new String[]{"告诉开发者", "重新启动", "退出软件"}, new DialogInterface.OnClickListener() {
+        builder.setItems(menus, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
                 if (which == 0) {
-                    sendToQQ();
-                } else if (which == 1) {
                     restartApp();
-                } else if (which == 2) {
+                } else if (which == 1) {
                     exitApp();
+                } else if (which == 2) {
+                    sendToQQ();
                 }
             }
         });
